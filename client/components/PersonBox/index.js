@@ -7,18 +7,22 @@ class PersonBox extends Component {
     'Department': PropTypes.string,
     'First Name': PropTypes.string,
     'Last Name': PropTypes.string,
-    pic: PropTypes.string,
     selected: PropTypes.bool,
   }
   static defaultProps = {
-    pic: 'defaultImg.png',
     selected: false,
   }
 
   render() {
-    const { pic, selected } = this.props
+    const { selected } = this.props
     const name = `${this.props['First Name']}  ${this.props['Last Name']}`
-    const image = require(`../../pictures/${pic!==''?pic:'defaultImg.png'}`)
+    let image
+    try {
+      image = require(`../../pictures/${this.props['First Name']} ${this.props['Last Name']}.jpg`)
+    } catch (e) {
+      // console.log(`The image ${this.props['First Name']} ${this.props['Last Name']}.jpg wasn't found`);
+      image = require('../../pictures/defaultImg.png')
+    }
 
     return (
       <div

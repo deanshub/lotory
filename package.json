@@ -6,8 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
-    "build": "NODE_ENV=production webpack --progress --colors"
+    "debug": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
+    "build": "NODE_ENV=production webpack --progress --colors",
+    "start": "node server/app.js"
   },
   "license": "ISC",
   "devDependencies": {
@@ -47,6 +48,7 @@
   },
   "dependencies": {
     "autoresponsive-react": "^1.1.10",
+    "csvjson": "^1.0.5",
     "draft-js": "^0.6.0",
     "draft-js-autolist-plugin": "0.0.1",
     "draft-js-emoji-plugin": "^1.0.1",
@@ -54,8 +56,11 @@
     "draft-js-linkify-plugin": "^1.0.0",
     "draft-js-plugins-editor": "^1.0.0",
     "draft-js-undo-plugin": "^1.0.0",
+    "express": "^4.13.4",
+    "howler": "git+https://github.com/goldfire/howler.js.git#v2.0.0-beta10",
     "immutable": "^3.8.1",
-    "howler": "git+https://github.com/goldfire/howler.js.git#v2.0.0-beta10"
+    "q": "^1.4.1",
+    "superagent": "^2.0.0"
   },
   "directories": {
     "doc": "docs"

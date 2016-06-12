@@ -1,6 +1,8 @@
-csv updating
-  images by name
 responsiveness
+saving events so that they will appear in previous events
+previous events should allow to upload images
+previous events should have a link per event to show who was choosen
+
 "Sisense Loto lunch" title
 date should be added
 loto choosing should consider
@@ -8,6 +10,3 @@ loto choosing should consider
   picking from different departments
 US/IL switch
 start should be a bigger button on the bottom
-saving events so that they will appear in previous events
-previous events should allow to upload images
-previous events should have a link per event to show who was choosen

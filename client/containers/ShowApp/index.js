@@ -1,19 +1,29 @@
 import React, { Component } from 'react'
+import request from 'superagent'
 
 import Navbar from '../../components/Navbar'
 import Lotteries from '../Lotteries'
 import style from '../Lotteries/style.css'
 
-const people = require('../../../docs/people.csv')
 const disabledPeople = []
-
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       started: false,
+      people: [],
     }
+  }
+
+  componentDidMount(){
+    request.get('/api/people')
+    .set('Accept', 'application/json')
+    .end((err, res)=>{
+      this.setState({
+        people: res.body,
+      })
+    })
   }
 
   startLottery(){
@@ -23,7 +33,7 @@ class App extends Component {
   }
 
   render() {
-    const { started } = this.state
+    const { started, people } = this.state
     const buttonText = started?'Stop':'Let\'s Go!'
 
     return (
