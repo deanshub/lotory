@@ -27,6 +27,10 @@ ReactDOM.render(
             component={Past}
             path="/past"
         />
+        <Route
+            component={Past}
+            path="/past/:date"
+        />
       </Route>
     </Router>
   </Provider>,

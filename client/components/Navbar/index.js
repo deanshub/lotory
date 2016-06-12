@@ -12,7 +12,7 @@ class Navbar extends Component {
             >
               <img
                   alt="Logo"
-                  src={require('./logo.png')}
+                  src={`/${require('./logo.png')}`}
                   style={{maxHeight:40, marginRight:20}}
               />
             </div>
