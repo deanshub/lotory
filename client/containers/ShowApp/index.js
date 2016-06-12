@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Navbar from '../../components/Navbar'
 import Lotteries from '../Lotteries'
+import style from '../Lotteries/style.css'
 
 const people = require('../../../docs/people.csv')
 const disabledPeople = []
@@ -22,18 +23,30 @@ class App extends Component {
   }
 
   render() {
+    const { started } = this.state
+    const buttonText = started?'Stop':'Let\'s Go!'
+
     return (
       <div>
         <Navbar
-            started={this.state.started}
+            started={started}
             toggleLottery={::this.startLottery}
         />
-          <Lotteries
-              disabledPeople={disabledPeople}
-              number={4}
-              people={people}
-              started={this.state.started}
-          />
+        <Lotteries
+            disabledPeople={disabledPeople}
+            number={4}
+            people={people}
+            started={started}
+        />
+        <div className={style.actionssection}>
+            <a
+                className="button is-info is-large"
+                onClick={::this.startLottery}
+                style={{border:'none', borderRadius:'none'}}
+            >
+            {buttonText}
+            </a>
+        </div>
       </div>
     )
   }

@@ -21,7 +21,7 @@ class PersonBox extends Component {
     const image = require(`../../pictures/${pic!==''?pic:'defaultImg.png'}`)
 
     return (
-      <article
+      <div
           className={[style.person, selected?style.selected:''].join(' ')}
       >
         <div>
@@ -38,7 +38,7 @@ class PersonBox extends Component {
         <p
             style={{fontSize:'1.2vw', textAlign:'center', padding:10}}
         >{name}</p>
-      </article>
+      </div>
     )
   }
 }

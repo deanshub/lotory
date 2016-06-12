@@ -8,3 +8,8 @@
   color: #000000 !important;
   border-bottom-color: #000000 !important;
 }
+.navtitle{
+    font-size: 6vh;
+    font-weight: 600;
+    margin: auto;
+}
