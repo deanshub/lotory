@@ -1,7 +1,7 @@
 
-# Showtime-web
+# Lottery
 
-Showtime app for the web.
+People lottery app.
 
 ## Setup
 
