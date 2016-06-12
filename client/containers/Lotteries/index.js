@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+import request from 'superagent'
+import moment from 'moment'
+
 import LotteryInbox from '../../components/LotteryInbox'
 import Howler from '../../components/Howler'
 import style from './style.css'
@@ -10,7 +13,9 @@ class Lotteries extends Component {
 
   constructor(props){
     super(props)
+    this.selectedPeople = []
     this.state = {
+      selectedPeople:[],
       started: false,
     }
   }
@@ -19,6 +24,40 @@ class Lotteries extends Component {
     this.setState({
       started: !this.state.started,
     })
+  }
+
+  handleSave(){
+    const localeKey = 'sll-localel-key'
+    const locale = window.localStorage.getItem(localeKey) || 'IL'
+    let date
+    if (locale === 'IL') {
+      date = moment().locale('fr').format('L')
+    }else{
+      date = moment().format('L')
+    }
+
+    request.post('/api/events')
+    .send({
+      event:{
+        people:this.selectedPeople,
+        date,
+      },
+    })
+    .set('Accept', 'application/json')
+    .end((err, res) => {
+      console.log(err, res.body);
+    })
+  }
+
+  handleStop(index, person){
+    let selectedPeople = this.selectedPeople
+    if (selectedPeople[index]!==person){
+      selectedPeople[index] = person
+      this.selectedPeople = selectedPeople
+      // this.setState({
+      //   selectedPeople,
+      // })
+    }
   }
 
   render() {
@@ -35,6 +74,7 @@ class Lotteries extends Component {
             lotteryElements.map((item, index)=>{
               return (
                 <LotteryInbox
+                    handleStop={person => this.handleStop(index, person)}
                     key={index}
                     {...this.props}
                     started={started}
@@ -56,6 +96,14 @@ class Lotteries extends Component {
             >
             {buttonText}
             </a>
+            {!started?
+            <a
+                className="button is-warning is-large"
+                onClick={::this.handleSave}
+                style={{border:'none', borderRadius:'none'}}
+            >
+            Save
+            </a>:undefined}
         </div>
       </div>
     )

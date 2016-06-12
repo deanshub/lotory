@@ -2,9 +2,12 @@ let path = require('path')
 let fs = require('fs')
 let express = require('express')
 let csvjson = require('csvjson')
+let bodyParser = require('body-parser')
 
 let pastEvents = require('./pastEvents.json')
 let app = express()
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname,'/../static/index.html'))

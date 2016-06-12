@@ -12,3 +12,6 @@ html{
     text-align: center;
     width: 100%;
 }
+.actionssection>a{
+  margin: 0 10px;
+}

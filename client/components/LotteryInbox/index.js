@@ -5,12 +5,8 @@ import style from './style.css'
 class LotteryInbox extends Component {
   static propTypes = {
     disabledPeople: PropTypes.array,
+    handleStop: PropTypes.func,
     people: PropTypes.array,
-    started: PropTypes.bool,
-  }
-
-  static defaultProps = {
-    started: false,
   }
 
   constructor(props){
@@ -59,10 +55,13 @@ class LotteryInbox extends Component {
   }
 
   render() {
-    // const { disabledPeople } = this.props
+    const { handleStop } = this.props
     const { started, shuffledPeople, personIndex } = this.state
 
     this.handleStart(started)
+    if (started===false){
+      handleStop(shuffledPeople[personIndex])
+    }
 
     return (
       <div

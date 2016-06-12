@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "autoresponsive-react": "^1.1.10",
+    "body-parser": "^1.15.1",
     "csvjson": "^1.0.5",
     "draft-js": "^0.6.0",
     "draft-js-autolist-plugin": "0.0.1",
