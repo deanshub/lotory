@@ -3,5 +3,6 @@ node_modules
 static
 .module-cache
 *.log*
+
 client/pictures
 docs/people.csv

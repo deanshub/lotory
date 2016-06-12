@@ -16,17 +16,9 @@ class LotteryInbox extends Component {
   constructor(props){
     super(props)
 
-    let shffule = (arr)=>{
-      let comperator = ()=>{
-        let num = Math.floor(Math.random()*10%2)
-        return num===0?-1:1
-      }
-      return arr.slice(0).sort(comperator)
-    }
-
     this.state = {
       personIndex: 0,
-      shuffledPeople: shffule(props.people.filter((person)=>person.Country==='IL')),
+      shuffledPeople: [],
       started: props.started,
     }
   }
@@ -52,14 +44,24 @@ class LotteryInbox extends Component {
   }
 
   componentWillReceiveProps(props){
+    let shffule = (arr)=>{
+      let comperator = ()=>{
+        let num = Math.floor(Math.random()*10%2)
+        return num===0?-1:1
+      }
+      return arr.slice(0).sort(comperator)
+    }
+
     this.setState({
       started: props.started,
+      shuffledPeople: shffule(props.people.filter((person)=>person.Country==='IL')),
     })
   }
 
   render() {
     // const { disabledPeople } = this.props
     const { started, shuffledPeople, personIndex } = this.state
+
     this.handleStart(started)
 
     return (

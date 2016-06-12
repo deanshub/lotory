@@ -5,15 +5,15 @@ import style from './style.css'
 
 class Lotteries extends Component {
   static propTypes = {
-    disabledPeople: PropTypes.array,
     number: PropTypes.number,
-    people: PropTypes.array,
     started: PropTypes.bool,
   }
 
   render() {
     const { number } = this.props
     let lotteryElements = new Array(number).fill(null)
+    const song = require('../../song/background.mp3')
+
     return (
       <div className={['fluid', style.lotteries].join(' ')}>
         {
@@ -29,7 +29,7 @@ class Lotteries extends Component {
         <Howler
             loop
             playing={this.props.started}
-            src="song/background.mp3"
+            src={song}
         />
       </div>
     )

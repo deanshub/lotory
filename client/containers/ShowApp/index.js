@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
+import request from 'superagent'
 
 import Navbar from '../../components/Navbar'
 import Lotteries from '../Lotteries'
 
-const people = require('../../../docs/people.csv')
 const disabledPeople = []
-
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       started: false,
+      people: [],
     }
   }
 
@@ -21,18 +21,29 @@ class App extends Component {
     })
   }
 
+  componentDidMount(){
+    request.get('/api/people')
+    .set('Accept', 'application/json')
+    .end((err, res)=>{
+      this.setState({
+        people: res.body,
+      })
+    })
+  }
+
   render() {
+    const { started, people } = this.state
     return (
       <div>
         <Navbar
-            started={this.state.started}
+            started={started}
             toggleLottery={::this.startLottery}
         />
           <Lotteries
               disabledPeople={disabledPeople}
               number={4}
               people={people}
-              started={this.state.started}
+              started={started}
           />
       </div>
     )

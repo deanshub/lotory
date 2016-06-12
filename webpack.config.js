@@ -27,6 +27,10 @@ module.exports = {
         loader: 'file',
       },
       {
+        test: /\.mp3$/,
+        loader: 'file',
+      },
+      {
         test: /\.(png|PNG)$/,
         loader: 'file?name=[name].[ext]',
       },
