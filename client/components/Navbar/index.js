@@ -53,12 +53,12 @@ class Navbar extends Component {
             <a className="nav-item" onClick={e => this.setLocale(e, "US")}>
               <img
                   alt="US"
-                  src={require('./us.png')} />
+                  src={`/${require('./us.png')}`} />
             </a>
             <a className="nav-item" onClick={e => this.setLocale(e, "IL")}>
               <img
                   alt="IL"
-                  src={require('./il.png')} />
+                  src={`/${require('./il.png')}`} />
             </a>
             <span className="nav-item">{getDateByLocale(locale)}</span>
           </div>
