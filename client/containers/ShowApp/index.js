@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
 import Navbar from '../../components/Navbar'
-
+import './style.css'
 
 class App extends Component {
   static propTypes = {

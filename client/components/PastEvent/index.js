@@ -13,7 +13,12 @@ class PastEvent extends Component {
     const { date, people } = this.props
     return (
       <div className={style.event}>
-        <p className="content is-large">{date}</p>
+        <p
+            className="content is-large"
+            style={{textAlign:'center'}}
+        >
+          {date}
+        </p>
         <div className={style.people}>
           {people.map((person,index)=><div key={index} style={{margin:'0 50px',flex:1}}><PersonBox {...person} height="15vh" /></div>)}
         </div>
