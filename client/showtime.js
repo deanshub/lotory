@@ -7,6 +7,7 @@ import 'bulma'
 
 import configure from './store'
 import App from './containers/ShowApp'
+import MainSection from './containers/MainSection'
 import Past from './containers/Past'
 
 const store = configure()
@@ -17,12 +18,16 @@ ReactDOM.render(
     <Router history={history}>
       <Route
           component={App}
-          path="/"
-      />
-      <Route
-          component={Past}
-          path="/past"
-      />
+      >
+        <Route
+            component={MainSection}
+            path="/"
+        />
+        <Route
+            component={Past}
+            path="/past"
+        />
+      </Route>
     </Router>
   </Provider>,
   document.getElementById('root')

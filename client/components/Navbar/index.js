@@ -1,19 +1,9 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router'
 import style from './style.css'
 
 class Navbar extends Component {
-  static propTypes = {
-    started: PropTypes.bool,
-    toggleLottery: PropTypes.func,
-  }
-  static defaultProps = {
-    started: false,
-  }
-
   render() {
-    const { started, toggleLottery } = this.props
-
     return (
       <nav className={['nav', style.branded].join(' ')}>
           <div className="nav-left">
