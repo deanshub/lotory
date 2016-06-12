@@ -36,7 +36,7 @@ class Navbar extends Component {
             <Link
                 activeClassName="is-active"
                 className={['nav-item is-tab', style.mytab].join(' ')}
-                to="/old"
+                to="/past"
             >
               Previous Selected
             </Link>

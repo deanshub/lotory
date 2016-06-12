@@ -7,6 +7,7 @@ import 'bulma'
 
 import configure from './store'
 import App from './containers/ShowApp'
+import Past from './containers/Past'
 
 const store = configure()
 const history = syncHistoryWithStore(browserHistory, store)
@@ -17,6 +18,10 @@ ReactDOM.render(
       <Route
           component={App}
           path="/"
+      />
+      <Route
+          component={Past}
+          path="/past"
       />
     </Router>
   </Provider>,

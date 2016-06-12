@@ -2,19 +2,30 @@ import React, { Component, PropTypes } from 'react'
 
 import style from './style.css'
 
+const imageStyle = {
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  height:'40vh',
+  margin: '0 auto',
+  backgroundColor: 'black',
+}
+
 class PersonBox extends Component {
   static propTypes = {
     'Department': PropTypes.string,
     'First Name': PropTypes.string,
     'Last Name': PropTypes.string,
+    height: PropTypes.string,
     selected: PropTypes.bool,
   }
   static defaultProps = {
     selected: false,
+    height: '40vh',
   }
 
   render() {
-    const { selected } = this.props
+    const { selected, height } = this.props
     const name = `${this.props['First Name']}  ${this.props['Last Name']}`
     let image
     try {
@@ -28,17 +39,8 @@ class PersonBox extends Component {
       <article
           className={[style.person, selected?style.selected:''].join(' ')}
       >
-        <div>
-          <figure
-              className="image"
-              style={{height:'40vh', width:'25vw', margin: '0 auto'}}
-          >
-            <img
-                src={image}
-                style={{height:'100%', width:'90%'}}
-            />
-          </figure>
-        </div>
+        <div style={{...imageStyle, height, backgroundImage:`url(${image})`}} />
+
         <p
             style={{fontSize:'1.2vw', textAlign:'center', padding:10}}
         >{name}</p>
