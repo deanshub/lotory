@@ -1,0 +1,7 @@
+.lottery{
+  flex: 1;
+  white-space: nowrap;
+  transition: all 500ms linear;
+  text-align: center;
+  display: flex;
+}

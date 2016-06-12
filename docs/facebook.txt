@@ -1,0 +1,3 @@
+coll = document.querySelectorAll(".uiList img")
+var arr = [].slice.call(coll);
+arr.forEach(function(i){console.log(i.src);})
