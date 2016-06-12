@@ -36,7 +36,7 @@ class PersonBox extends Component {
     }
 
     return (
-      <article
+      <div
           className={[style.person, selected?style.selected:''].join(' ')}
       >
         <div style={{...imageStyle, height, backgroundImage:`url(${image})`}} />
@@ -44,7 +44,7 @@ class PersonBox extends Component {
         <p
             style={{fontSize:'1.2vw', textAlign:'center', padding:10}}
         >{name}</p>
-      </article>
+      </div>
     )
   }
 }

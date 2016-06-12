@@ -3,6 +3,7 @@ import request from 'superagent'
 
 import Navbar from '../../components/Navbar'
 import Lotteries from '../Lotteries'
+import style from '../Lotteries/style.css'
 
 const disabledPeople = []
 
@@ -15,12 +16,6 @@ class App extends Component {
     }
   }
 
-  startLottery(){
-    this.setState({
-      started: !this.state.started,
-    })
-  }
-
   componentDidMount(){
     request.get('/api/people')
     .set('Accept', 'application/json')
@@ -31,20 +26,37 @@ class App extends Component {
     })
   }
 
+  startLottery(){
+    this.setState({
+      started: !this.state.started,
+    })
+  }
+
   render() {
     const { started, people } = this.state
+    const buttonText = started?'Stop':'Let\'s Go!'
+
     return (
       <div>
         <Navbar
             started={started}
             toggleLottery={::this.startLottery}
         />
-          <Lotteries
-              disabledPeople={disabledPeople}
-              number={4}
-              people={people}
-              started={started}
-          />
+        <Lotteries
+            disabledPeople={disabledPeople}
+            number={4}
+            people={people}
+            started={started}
+        />
+        <div className={style.actionssection}>
+            <a
+                className="button is-info is-large"
+                onClick={::this.startLottery}
+                style={{border:'none', borderRadius:'none'}}
+            >
+            {buttonText}
+            </a>
+        </div>
       </div>
     )
   }

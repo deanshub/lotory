@@ -41,23 +41,8 @@ class Navbar extends Component {
               Previous Selected
             </Link>
           </div>
-
-          <span className="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-
+          <span className={style.navtitle}>Sisense Lottery Launch</span>
           <div className="nav-right nav-menu">
-            <span className="nav-item">
-              <a
-                  className="button"
-                  onClick={toggleLottery}
-                  style={{border:'none', borderRadius:'none'}}
-              >
-                {started?'Stop':'Let\'s Go!'}
-              </a>
-            </span>
           </div>
       </nav>
     )
