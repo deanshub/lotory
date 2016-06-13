@@ -45,10 +45,17 @@ class Past extends Component {
     return (
       <div className={['fluid',style.events].join(' ')}>
         {
-          events.filter(filterEvents).map((event, index)=>{
-            event.date=date?`Those are the people who were chosend in the lottery of ${event.date}`:event.date
+          events.filter(filterEvents).map((event)=>{
+            let newEvent = Object.assign({}, event)
+            if (date){
+              newEvent.date=`Those are the people who were chosend in the lottery of ${event.date}`
+              newEvent.specificDate = true
+            }
             return (
-              <PastEvent key={index} {...event} />
+              <PastEvent
+                  key={newEvent.date}
+                  {...newEvent}
+              />
             )
           })
         }
