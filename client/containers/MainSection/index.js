@@ -34,6 +34,7 @@ class MainSection extends Component {
     return (
       <Lotteries
           disabledPeople={disabledPeople}
+          locale={locale}
           number={4}
           people={people.filter(person=>person.Country===locale)}
       />

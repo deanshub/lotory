@@ -9,6 +9,7 @@ import style from './style.css'
 class Lotteries extends Component {
   static propTypes = {
     number: PropTypes.number,
+    locale: PropTypes.string,
   }
 
   constructor(props){
@@ -27,8 +28,7 @@ class Lotteries extends Component {
   }
 
   handleSave(){
-    const localeKey = 'sll-localel-key'
-    const locale = window.localStorage.getItem(localeKey) || 'IL'
+    const locale = this.props.locale
     let date
     if (locale === 'IL') {
       date = moment().locale('fr').format('L')
