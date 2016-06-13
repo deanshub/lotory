@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import request from 'superagent'
 
 import Lotteries from '../Lotteries'
@@ -6,6 +6,10 @@ import Lotteries from '../Lotteries'
 const disabledPeople = []
 
 class MainSection extends Component {
+  static propTypes = {
+    locale: PropTypes.string,
+  }
+
   constructor(props){
     super(props)
     this.state = {
@@ -25,12 +29,13 @@ class MainSection extends Component {
 
   render() {
     const { people } = this.state
+    const { locale } = this.props
 
     return (
       <Lotteries
           disabledPeople={disabledPeople}
           number={4}
-          people={people}
+          people={people.filter(person=>person.Country===locale)}
       />
     )
   }

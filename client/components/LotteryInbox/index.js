@@ -50,7 +50,7 @@ class LotteryInbox extends Component {
 
     this.setState({
       started: props.started,
-      shuffledPeople: shffule(props.people.filter((person)=>person.Country==='IL')),
+      shuffledPeople: shffule(props.people),
     })
   }
 

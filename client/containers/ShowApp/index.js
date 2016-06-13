@@ -30,9 +30,9 @@ class App extends Component {
       <div>
         <Navbar
             locale={locale}
-            setLocale={::this.setLocale} 
+            setLocale={::this.setLocale}
         />
-        {this.props.children}
+        {React.cloneElement(this.props.children,{locale})}
       </div>
     )
   }
