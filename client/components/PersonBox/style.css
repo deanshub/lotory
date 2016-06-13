@@ -1,5 +1,5 @@
 .person{
-  /*width: 18%;*/
+  transition: all 200ms ease-in;
   margin: auto;
   width: 90%;
   display: inline-block;

@@ -15,14 +15,14 @@ class PastEvent extends Component {
     return (
       <div className={style.event}>
         <p
-            className="content is-large"
+            className="content is-medium"
             style={{textAlign:'center'}}
         >
           {
             specificDate?
             date
             :
-            <Link to={`/past/${date.replace(/\//g,'')}`}>
+            <Link style={{color:'#c8c8c8',border:'none'}} to={`/past/${date.replace(/\//g,'')}`}>
               {date}
             </Link>
           }
