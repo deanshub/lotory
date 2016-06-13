@@ -5,18 +5,18 @@ import style from './style.css'
 
 const getDateByLocale = locale => {
     // Moment does not support IL, we can use fr instead...
-    if (locale === "IL") {
-        return moment().locale("fr").format("L")
-    }
-    return moment().format("L")
+  if (locale === 'IL') {
+      return moment().locale('fr').format('L')
+  }
+  return moment().format('L')
 }
 
 class Navbar extends Component {
   setLocale (e, locale) {
-    e.preventDefault();
+    e.preventDefault()
 
-    const { setLocale } = this.props;
-    setLocale(locale);
+    const { setLocale } = this.props
+    setLocale(locale)
   }
 
   render() {
