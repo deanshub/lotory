@@ -3,6 +3,7 @@ let fs = require('fs')
 let express = require('express')
 let csvjson = require('csvjson')
 let bodyParser = require('body-parser')
+let multer = require('multer')
 let flash = require('connect-flash')
 let cookieParser = require('cookie-parser')
 let session = require('express-session')
@@ -10,6 +11,17 @@ let auth = require('./auth')
 
 let pastEvents = require('./pastEvents.json')
 let app = express()
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'docs/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, "people.csv")
+  }
+})
+
+let upload = multer({ storage: storage });
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -40,6 +52,10 @@ app.post('/api/events', auth.isAdmin, function (req, res) {
     fs.writeFile(path.join(__dirname,'pastEvents.json'), JSON.stringify(pastEvents))
   }
   res.json(pastEvents)
+})
+
+app.post('/api/csv/upload', upload.single('avatar'), function (req, res, next) {
+    res.json(req.file.originalname);
 })
 
 app.use(express.static(path.join(__dirname,'/../static')))

@@ -1,0 +1,21 @@
+.admin{
+  height: 90vh;
+  overflow-y: auto;
+  padding: 10vh;
+}
+
+.h1{
+  color: #586e75;
+  font-size: 10vh;
+  font-weight: 600;
+}
+
+.label{
+  font-weight: 500;
+  padding-right: 1vw;
+}
+
+.submit{
+  display: block;
+  margin: 3vh 0;
+}
