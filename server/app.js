@@ -17,11 +17,11 @@ const storage = multer.diskStorage({
     cb(null, 'docs/')
   },
   filename: function (req, file, cb) {
-    cb(null, "people.csv")
-  }
+    cb(null, 'people.csv')
+  },
 })
 
-let upload = multer({ storage: storage });
+let upload = multer({ storage: storage })
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -54,8 +54,8 @@ app.post('/api/events', auth.isAdmin, function (req, res) {
   res.json(pastEvents)
 })
 
-app.post('/api/csv/upload', upload.single('avatar'), function (req, res, next) {
-    res.json(req.file.originalname);
+app.post('/api/csv/upload', auth.isAdmin, upload.single('avatar'), function (req, res) {
+  res.json(req.file.originalname)
 })
 
 app.use(express.static(path.join(__dirname,'/../static')))
@@ -65,5 +65,5 @@ app.get('*', function (req, res) {
 })
 
 app.listen(8002, function () {
-  console.log('Example app listening on port 8002!');
+  console.log('Example app listening on port 8002!')
 })

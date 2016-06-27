@@ -8,9 +8,8 @@ module.exports = {
 
     passport.use(new LocalStrategy(
       function(username, password, done) {
-        console.log(username, password);
         if (!username || !password) { return done(null, false, { message: 'Not all fields filled' }) }
-        if (username.toLowerCase()==='sisensehr' && password==='aviva'){
+        if (username.toLowerCase()===process.env.USERNAME && password===process.env.PASSWORD){
           return done(null, {username, password})
         }
 
