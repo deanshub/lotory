@@ -10,7 +10,9 @@
 }
 .navtitle{
   font-size: 2vh;
-  color: #000000;
   font-weight: 600;
   margin: auto;
+}
+.navtitle a{
+  color: #000000;
 }

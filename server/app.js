@@ -3,11 +3,23 @@ let fs = require('fs')
 let express = require('express')
 let csvjson = require('csvjson')
 let bodyParser = require('body-parser')
+let flash = require('connect-flash')
+let cookieParser = require('cookie-parser')
+let session = require('express-session')
+let auth = require('./auth')
 
 let pastEvents = require('./pastEvents.json')
 let app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
+app.use(session({
+  secret:'keyboard dog',
+  resave: false,
+  saveUninitialized: true,
+}))
+app.use(flash())
+auth.register(app)
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname,'/../static/index.html'))
@@ -21,7 +33,8 @@ app.get('/api/people', function (req, res) {
 app.get('/api/events', function (req, res) {
   res.json(pastEvents)
 })
-app.post('/api/events', function (req, res) {
+
+app.post('/api/events', auth.isAdmin, function (req, res) {
   if (req.body.event && req.body.event.date && req.body.event.people){
     pastEvents.push(req.body.event)
     fs.writeFile(path.join(__dirname,'pastEvents.json'), JSON.stringify(pastEvents))

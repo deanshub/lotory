@@ -9,6 +9,7 @@ import configure from './store'
 import App from './containers/ShowApp'
 import MainSection from './containers/MainSection'
 import Past from './containers/Past'
+import Login from './containers/Login'
 
 const store = configure()
 const history = syncHistoryWithStore(browserHistory, store)
@@ -30,6 +31,10 @@ ReactDOM.render(
         <Route
             component={Past}
             path="/past/:date"
+        />
+        <Route
+            component={Login}
+            path="/login"
         />
       </Route>
     </Router>

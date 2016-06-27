@@ -48,7 +48,13 @@ class Navbar extends Component {
               Previous Selected
             </Link>
           </div>
-          <span className={style.navtitle}>Sisense Lottery Launch</span>
+          <span className={style.navtitle}>
+            <Link
+                to="/login"
+            >
+              Sisense Lottery Launch
+            </Link>
+          </span>
           <div className="nav-right nav-menu">
             <a className="nav-item" onClick={e => this.setLocale(e, "US")}>
               <img
