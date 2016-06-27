@@ -9,6 +9,7 @@ const imageStyle = {
   height:'40vh',
   margin: '0 auto',
   backgroundColor: 'black',
+  transition: 'all 200ms ease-in',
 }
 
 class PersonBox extends Component {

@@ -48,7 +48,7 @@ class Past extends Component {
           events.filter(filterEvents).map((event)=>{
             let newEvent = Object.assign({}, event)
             if (date){
-              newEvent.date=`Those are the people who were chosend in the lottery of ${event.date}`
+              newEvent.date=`Those are the people who were chosen in the lottery of ${event.date}`
               newEvent.specificDate = true
             }
             return (
