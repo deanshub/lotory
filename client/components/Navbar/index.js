@@ -47,6 +47,13 @@ class Navbar extends Component {
             >
               Previous Selected
             </Link>
+            <Link
+                activeClassName="is-active"
+                className={['nav-item is-tab', style.mytab].join(' ')}
+                to="/admin"
+            >
+              Administration
+            </Link>
           </div>
           <span className={style.navtitle}>Sisense Lottery Launch</span>
           <div className="nav-right nav-menu">

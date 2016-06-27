@@ -9,6 +9,7 @@ import configure from './store'
 import App from './containers/ShowApp'
 import MainSection from './containers/MainSection'
 import Past from './containers/Past'
+import Admin from './containers/Admin'
 
 const store = configure()
 const history = syncHistoryWithStore(browserHistory, store)
@@ -31,6 +32,10 @@ ReactDOM.render(
             component={Past}
             path="/past/:date"
         />
+        <Route
+          component={Admin}
+          path="/admin"
+         />
       </Route>
     </Router>
   </Provider>,

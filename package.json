@@ -61,6 +61,7 @@
     "howler": "git+https://github.com/goldfire/howler.js.git#v2.0.0-beta10",
     "immutable": "^3.8.1",
     "moment": "^2.13.0",
+    "multer": "^1.1.0",
     "q": "^1.4.1",
     "superagent": "^2.0.0"
   },
