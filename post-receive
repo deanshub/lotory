@@ -1,0 +1,8 @@
+#!/bin/bash
+pm2 delete lotory
+GIT_WORK_TREE=~/Desktop/apps/lotory git checkout -f
+cd ~/Desktop/apps/lotory
+nvm use 6.2.2
+npm i
+webpack --colors --progress
+pm2 start server/app.js --name lotory

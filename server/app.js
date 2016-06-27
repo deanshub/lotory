@@ -51,6 +51,6 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname,'/../static/index.html'))
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(8002, function () {
+  console.log('Example app listening on port 8002!');
 })
