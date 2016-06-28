@@ -34,9 +34,9 @@ ReactDOM.render(
             path="/past/:date"
         />
         <Route
-          component={Admin}
-          path="/admin"
-         />
+            component={Admin}
+            path="/admin"
+        />
         <Route
             component={Login}
             path="/login"

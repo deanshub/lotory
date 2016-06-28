@@ -1,28 +1,6 @@
-import React, { Component, PropTypes } from 'react'
-import request from 'superagent'
+import React, { Component } from 'react'
 
 class Login extends Component {
-  // static propTypes = {
-  //   params: PropTypes.object,
-  // }
-
-  // constructor(props){
-  //   super(props)
-  //   this.state = {
-  //     events: [],
-  //   }
-  // }
-  //
-  // componentDidMount(){
-  //   request.get('/api/events')
-  //   .set('Accept', 'application/json')
-  //   .end((err, res)=>{
-  //     this.setState({
-  //       events: res.body,
-  //     })
-  //   })
-  // }
-
   render() {
     return (
       <div className="container" style={{marginTop:10}}>

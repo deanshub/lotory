@@ -24,6 +24,12 @@ module.exports = {
       done(null, user)
     })
 
+    app.get('/api/loggedin', (req, res)=>{
+      res.json({
+        authenticated:req.isAuthenticated(),
+      })
+    })
+
     app.post('/login', passport.authenticate('local',{
       successRedirect: '/',
       failureRedirect: '/login',

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import request from 'superagent'
 
 import Navbar from '../../components/Navbar'
 import './style.css'
@@ -15,7 +16,28 @@ class App extends Component {
 
     // Get locale from localStorage
     const locale = window.localStorage.getItem(localeKey) || 'IL'
-    this.state = { locale }
+    this.state = {
+      locale,
+      loggedin:false,
+    }
+  }
+
+  componentDidMount(){
+    request.get('/api/loggedin')
+    .set('Accept', 'application/json')
+    .end((err, res)=>{
+      if (res.body && res.body.authenticated){
+        this.refreshLoggedin(res.body.authenticated)
+      }else{
+        this.refreshLoggedin(false)
+      }
+    })
+  }
+
+  refreshLoggedin(loggedin=false){
+    this.setState({
+      loggedin,
+    })
   }
 
   setLocale(locale) {
@@ -24,15 +46,16 @@ class App extends Component {
   }
 
   render() {
-    const { locale } = this.state
+    const { locale, loggedin } = this.state
 
     return (
       <div>
         <Navbar
             locale={locale}
+            loggedin={loggedin}
             setLocale={::this.setLocale}
         />
-        {React.cloneElement(this.props.children,{locale})}
+        {React.cloneElement(this.props.children,{locale, loggedin })}
       </div>
     )
   }

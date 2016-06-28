@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import moment from 'moment'
 import style from './style.css'
@@ -6,12 +6,20 @@ import style from './style.css'
 const getDateByLocale = locale => {
     // Moment does not support IL, we can use fr instead...
   if (locale === 'IL') {
-      return moment().locale('fr').format('L')
+    return moment().locale('fr').format('L')
   }
   return moment().format('L')
 }
 
 class Navbar extends Component {
+  static propTypes = {
+    loggedin: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    loggedin: false,
+  }
+
   setLocale (e, locale) {
     e.preventDefault()
 
@@ -20,7 +28,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { locale } = this.props;
+    const { locale, loggedin } = this.props
     return (
       <nav className={['nav', style.branded].join(' ')}>
           <div className="nav-left">
@@ -47,13 +55,17 @@ class Navbar extends Component {
             >
               Previous Selected
             </Link>
-            <Link
-                activeClassName="is-active"
-                className={['nav-item is-tab', style.mytab].join(' ')}
-                to="/admin"
-            >
-              Administration
-            </Link>
+            {loggedin?
+              <Link
+                  activeClassName="is-active"
+                  className={['nav-item is-tab', style.mytab].join(' ')}
+                  to="/admin"
+              >
+                Administration
+              </Link>:
+              null
+            }
+
           </div>
           <span className={style.navtitle}>
             <Link
@@ -63,15 +75,17 @@ class Navbar extends Component {
             </Link>
           </span>
           <div className="nav-right nav-menu">
-            <a className="nav-item" onClick={e => this.setLocale(e, "US")}>
+            <a className="nav-item" onClick={e => this.setLocale(e, 'US')}>
               <img
                   alt="US"
-                  src={`/${require('./us.png')}`} />
+                  src={`/${require('./us.png')}`}
+              />
             </a>
-            <a className="nav-item" onClick={e => this.setLocale(e, "IL")}>
+            <a className="nav-item" onClick={e => this.setLocale(e, 'IL')}>
               <img
                   alt="IL"
-                  src={`/${require('./il.png')}`} />
+                  src={`/${require('./il.png')}`}
+              />
             </a>
             <span className="nav-item">{getDateByLocale(locale)}</span>
           </div>

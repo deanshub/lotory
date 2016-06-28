@@ -8,6 +8,7 @@ const disabledPeople = []
 class MainSection extends Component {
   static propTypes = {
     locale: PropTypes.string,
+    loggedin: PropTypes.bool,
   }
 
   constructor(props){
@@ -29,12 +30,13 @@ class MainSection extends Component {
 
   render() {
     const { people } = this.state
-    const { locale } = this.props
+    const { locale, loggedin } = this.props
 
     return (
       <Lotteries
           disabledPeople={disabledPeople}
           locale={locale}
+          loggedin={loggedin}
           number={4}
           people={people.filter(person=>person.Country===locale)}
       />

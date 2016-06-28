@@ -9,6 +9,7 @@ import style from './style.css'
 class Lotteries extends Component {
   static propTypes = {
     number: PropTypes.number,
+    loggedin: PropTypes.bool,
     locale: PropTypes.string,
   }
 
@@ -61,7 +62,7 @@ class Lotteries extends Component {
   }
 
   render() {
-    const { number } = this.props
+    const { number, loggedin } = this.props
     const { started } = this.state
     let lotteryElements = new Array(number).fill(null)
     const song = require('../../song/background.mp3')
@@ -96,7 +97,7 @@ class Lotteries extends Component {
             >
             {buttonText}
             </a>
-            {!started?
+            {!started && loggedin?
             <a
                 className="button is-warning is-large"
                 onClick={::this.handleSave}
